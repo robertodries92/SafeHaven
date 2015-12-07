@@ -65,7 +65,7 @@
 
 	};
 
-	$( document ).on( 'ready', function() {
+	$( document ).ready(function() {
 
 		/* =======================================
 		 * Splash Screen Logo
@@ -99,11 +99,7 @@
 		 * Initiate Stellar JS
 		 * =======================================
 		 */
-		$.stellar({
-			responsive: true,
-			horizontalScrolling: false,
-			hideDistantElements: false,
-		});
+
 
 		/* =======================================
 		 * WOW JS
@@ -123,19 +119,6 @@
 		 * Initiate Owl Carousel
 		 * =======================================
 		 */
-		$( '.screenshot-images' ).owlCarousel({
-			items       : 4,
-			itemsCustom : [
-				[0, 1],
-				[480, 2],
-				[768, 3],
-				[992, 4]
-			],
-		});
-		$( '.testimonial-items' ).owlCarousel({
-			singleItem : true,
-			autoHeight : true,
-		});
 
 		/* =======================================
 		 * Scroll Spy
@@ -155,11 +138,7 @@
 		 * One Page Navigation
 		 * =======================================
 		 */
-		$( '#navigation' ).onePageNav({
-			changeHash : true,
-			scrollSpeed : 1000,
-			scrollOffset : 60,
-		});
+
 		
 		$( 'a.anchor-link' ).on( 'click', function( e ) {
 			e.preventDefault();
@@ -175,16 +154,7 @@
 		/* =======================================
 		 * Nivo Lightbox
 		 * =======================================
-		 */
-		$( '.screenshot-images a' ).nivoLightbox({
-			effect : 'fadeScale',
-			beforeShowLightbox : function() {
-				$( '#document' ).addClass( 'blur' );
-			},
-			afterHideLightbox : function() {
-				$( '#document' ).removeClass( 'blur' );
-			},
-		});
+	*/
 
 		/* =======================================
 		 * Subscribe Form AJAX
@@ -216,12 +186,12 @@
 				jsonp: "c", // trigger MailChimp to return a JSONP response
 				contentType: "application/json; charset=utf-8",
 				success  : function( response ) {
-					
+
 					// error
 					if ( response.status == 'error' ) {
 						$alert.html( response.msg );
 						$alert.addClass( 'alert-danger' ).fadeIn( 500 );
-					} 
+					}
 
 					// success
 					else {
@@ -240,48 +210,7 @@
 		 * Contact Form AJAX
 		 * =======================================
 		 */
-		$( '#contact-form' ).live( 'submit', function( e ) {
 
-
-			e.preventDefault();
-
-			var $el = $( this ),
-			    $alert = $el.find( '.form-validation' ),
-			    $submit = $el.find( 'button' ),
-			    action = $el.attr( 'action' );
-
-			// button loading
-			$submit.button( 'loading' );
-
-			// reset alert
-			$alert.removeClass( 'alert-danger alert-success' );
-			$alert.html( '' );
-
-			$.ajax({
-				type     : 'POST',
-				url      : action,
-				data     : $el.serialize() + '&ajax=1',
-				dataType : 'JSON',
-				success  : function( response ) {
-					
-					// error
-					if ( response.status == 'error' ) {
-						$alert.html( response.msg );
-						$alert.addClass( 'alert-danger' ).fadeIn( 500 );
-					} 
-
-					// success
-					else {
-						$el.trigger( 'reset' );
-						$alert.html( response.msg );
-						$alert.addClass( 'alert-success' ).fadeIn( 500 );
-					}
-
-					// reset button
-					$submit.button( 'reset' );
-				},
-			})
-		});
 	});
 
 	$( window ).on( 'load', function() {
