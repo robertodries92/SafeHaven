@@ -191,6 +191,8 @@
 		 * =======================================
 		 */
 		$( '#subscribe-form' ).on( 'submit', function( e ) {
+
+			console.log('hello');
 			e.preventDefault();
 
 			var $el = $( this ),
@@ -208,26 +210,29 @@
 			$.ajax({
 				type     : 'POST',
 				url      : action,
-				data     : $el.serialize() + '&ajax=1',
-				dataType : 'JSON',
+				data     : $el.serialize(),
+				cache: false,
+				dataType: "jsonp",
+				jsonp: "c", // trigger MailChimp to return a JSONP response
+				contentType: "application/json; charset=utf-8",
 				success  : function( response ) {
 					
 					// error
 					if ( response.status == 'error' ) {
-						$alert.html( response.message );
+						$alert.html( response.msg );
 						$alert.addClass( 'alert-danger' ).fadeIn( 500 );
 					} 
 
 					// success
 					else {
 						$el.trigger( 'reset' );
-						$alert.html( response.message );
+						$alert.html( response.msg );
 						$alert.addClass( 'alert-success' ).fadeIn( 500 );
 					}
 
 					// reset button
 					$submit.button( 'reset' );
-				},
+				}
 			})
 		});
 
@@ -235,7 +240,9 @@
 		 * Contact Form AJAX
 		 * =======================================
 		 */
-		$( '#contact-form' ).on( 'submit', function( e ) {
+		$( '#contact-form' ).live( 'submit', function( e ) {
+
+
 			e.preventDefault();
 
 			var $el = $( this ),
@@ -259,14 +266,14 @@
 					
 					// error
 					if ( response.status == 'error' ) {
-						$alert.html( response.message );
+						$alert.html( response.msg );
 						$alert.addClass( 'alert-danger' ).fadeIn( 500 );
 					} 
 
 					// success
 					else {
 						$el.trigger( 'reset' );
-						$alert.html( response.message );
+						$alert.html( response.msg );
 						$alert.addClass( 'alert-success' ).fadeIn( 500 );
 					}
 
