@@ -20,7 +20,6 @@ body {
 	line-height: 28px;
 	background-color: #ffffff;
 	color: #777777;
-	overflow-x: hidden;
 	background-color:black;
 
 }
@@ -473,7 +472,7 @@ h1, h2, h3, h4, h5, h6 {
  */
 
 .hero-section {
-	height: 100%;
+	min-height: 100%;
 	background-image: url(../images/backgrounds/hero-bg.jpg);
 	background-repeat: no-repeat;
 	background-size: cover;
@@ -639,6 +638,58 @@ h1, h2, h3, h4, h5, h6 {
 	}
 }
 
+
+/**
+ * ========================================
+ * CONTACT SECTION
+ * ========================================
+ */
+.contact-section {
+	background-image: none;
+	background-color: #fff;
+}
+
+.contact-section ul {
+	margin: 0;
+	padding: 25px 0;
+}
+
+
+/**
+ * ========================================
+ * TEAM SECTION
+ * ========================================
+ */
+.team-section {
+	background-image: none;
+	background-color: #EEE;
+	padding: 30px 0;
+}
+
+.team-member {
+	padding: 40px 10px;
+  background: #FFFFFF;
+  border: 1px solid #E0E0E0;
+	border-radius: 3px;
+	margin: 0 auto 50px;
+	text-align: center;
+	max-width: 250px;
+
+}
+
+.team-member img {
+	width: 100px;
+}
+
+.team-member h3 {
+	font-size: 18px;
+}
+
+.team-member ul {
+	margin: 30px 0 0;
+	padding:0;
+}
+
 /**
  * ========================================
  * SUBSCRIBE SECTION
@@ -684,14 +735,15 @@ h1, h2, h3, h4, h5, h6 {
  */
 
 .footer-section {
-	position: absolute;
+	/*position: absolute;
 	bottom: 0;
-	left: 0;
+	left: 0;*/
 	width: 100%;
-	padding: 0 15px 20px;
+	padding: 20px 15px;
 	color: #cccccc;
 	text-align: center;
-	opacity: 0.7;
+	background: #fff;
+	background-image: none;
 }
 .footer-text {
 	margin: 0;
